@@ -9,7 +9,47 @@
         </style>
     @endif
 
-
+    {{-- Mobile/tablet hero fix: full-bleed image with text overlaid ON TOP.
+         Desktop (>=992px) is intentionally untouched. --}}
+    <style>
+        @media only screen and (max-width: 991px) {
+            /* Give the slide a real height so the absolute image can fill it */
+            .banner-three .bg_banner-three {
+                min-height: 520px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+            }
+            /* Image covers the full slide instead of collapsing to a thin band.
+               Overrides the inline height:auto / object-fit on the <img>. */
+            .banner-three .bg_banner-three > img {
+                height: 100% !important;
+                width: 100% !important;
+                object-fit: cover !important;
+            }
+            /* Swap the desktop white side-wash for a subtle dark overlay so the
+               overlaid heading/subtitle/button stay readable over light images. */
+            .banner-three .bg_banner-three::after {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0.6) 100%) !important;
+            }
+            /* Text block overlays (vertically centered) instead of dropping below */
+            .banner-three .banner-three-inner {
+                padding: 40px 0 !important;
+                position: relative;
+                z-index: 2;
+            }
+            /* Desktop text is #000 on a white wash; on the dark overlay flip to white */
+            .banner-three .banner-three-inner .title,
+            .banner-three .banner-three-inner .disc {
+                color: #fff !important;
+            }
+        }
+        @media only screen and (max-width: 575px) {
+            .banner-three .bg_banner-three {
+                min-height: 480px;
+            }
+        }
+    </style>
 
         <!-- banner area start three -->
         <div class="rts-banner-area banner-three {{$module->class}}">
