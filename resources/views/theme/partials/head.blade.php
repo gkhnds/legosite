@@ -201,8 +201,9 @@
 <link rel="stylesheet" href="/assets/css/plugins/fontawesome-5.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/assets/css/plugins/animate.min.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/assets/css/plugins/unicons.css" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="/assets/css/style.css" media="print" onload="this.media='all'">
+<!-- Kritik CSS: render-blocking (FOUC önlemek için normal yükleniyor) -->
+<link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 
 <!-- Yedek: Tarayıcı desteği olmayanlar için noscript -->
 <noscript>
@@ -210,8 +211,6 @@
   <link rel="stylesheet" href="/assets/css/plugins/fontawesome-5.css">
   <link rel="stylesheet" href="/assets/css/plugins/animate.min.css">
   <link rel="stylesheet" href="/assets/css/plugins/unicons.css">
-  <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
 </noscript>
 
     <!-- Creaati Theme Contents -->
