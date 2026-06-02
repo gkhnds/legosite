@@ -92,6 +92,26 @@
                     <img class="menu-dark" src="/assets/images/icon/menu.png" alt="Menu-icon">
                     <img class="menu-light" src="/assets/images/icon/menu-light.png" alt="Menu-icon">
                 </button>
+                {{-- Hamburger icon fix: use the clean menu-light.png in BOTH states.
+                     Resting = dark-filtered (readable on the gold button); hover = white as before.
+                     Scoped to header-two #menu-btn so desktop/other headers are untouched. --}}
+                <style>
+                    /* Never show the chunky 42x32 menu.png */
+                    .header-two #menu-btn .menu-dark { display: none; }
+                    /* Default (resting): clean icon, sized crisp, recolored dark for the gold bg */
+                    .header-two #menu-btn .menu-light {
+                        display: block;
+                        width: 24px;
+                        height: auto;
+                        filter: brightness(0);
+                    }
+                    /* Hover: same clean icon, white (no filter) — exactly as before */
+                    .header-two #menu-btn:hover .menu-light {
+                        display: block;
+                        filter: none;
+                    }
+                    .header-two #menu-btn:hover .menu-dark { display: none; }
+                </style>
 
             </div>
         </div>
