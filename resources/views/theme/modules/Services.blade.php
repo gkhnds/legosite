@@ -26,8 +26,8 @@
                         <!-- single service start -->
                         <div class="rts-single-service-h2">
                             <a href="{{$lang}}/{{$datas->component->slug}}/{{$data->static->slug}}" class="thumbnail">
-                                <img width="550" height="350" src="{{Helpers::CacheImageLink($data->dynamic->resim,array('ThumbsMode' => true,'Mime' => 'webp'))}}" alt="{{$data->dynamic->baslik}}">
-                                <amp-img alt="{{$data->dynamic->baslik}} {{$masters->seo->data->dynamic->keyword1}}" src="{{Helpers::CacheImageLink($data->dynamic->resim,array('ThumbsMode' => true,'Mime' => 'webp'))}}" width="250" height="159" layout="responsive" > </amp-img>
+                                <img width="550" height="350" src="{{Helpers::CacheImageLink($data->dynamic->liste_resmi,array('ThumbsMode' => true,'Mime' => 'webp'))}}" alt="{{$data->dynamic->baslik}}">
+                                <amp-img alt="{{$data->dynamic->baslik}} {{$masters->seo->data->dynamic->keyword1}}" src="{{Helpers::CacheImageLink($data->dynamic->liste_resmi,array('ThumbsMode' => true,'Mime' => 'webp'))}}" width="250" height="159" layout="responsive" > </amp-img>
                             </a>
                             <div class="body">
                                 <a href="{{$lang}}/{{$datas->component->slug}}/{{$data->static->slug}}">
