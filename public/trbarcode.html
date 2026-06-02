@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barkod Oluşturucu</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+            color: #555;
+            font-size: 12px;
+        }
+        select, input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 8px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        canvas {
+            margin-top: 8px;
+            width: 100%;
+            height: auto;
+        }
+        .download-btns {
+            margin-top: 8px;
+            display: flex;
+            gap: 5px;
+        }
+        .download-btns button {
+            flex: 1;
+            background-color: #28a745;
+            padding: 8px;
+            font-size: 11px;
+        }
+        .download-btns button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Barcode Generator</h1>
+    <label for="barcodeFormat">Select Barcode Format:</label>
+    <select id="barcodeFormat">
+        <option value="EAN13">EAN-13</option>
+        <!--<option value="CODE128">Code 128</option>
+        
+        <option value="UPC">UPC</option>
+        <option value="CODE39">Code 39</option>
+        <option value="ITF">ITF</option>
+        <option value="MSI">MSI</option>
+        <option value="Pharmacode">Pharmacode</option>
+        <option value="Codabar">Codabar</option>
+        <option value="EAN8">EAN-8</option> -->
+    </select>
+
+    <label for="barcodeInput">Enter <b>Your</b> Barcode Number:</label>
+    <input type="text" id="barcodeInput" placeholder="Barcode Number" value="5901234123457">
+
+    <button onclick="generateBarcode()">Create Barcode</button>
+
+    <canvas id="barcodeCanvas"></canvas>
+
+    <div class="download-btns">
+        <button onclick="downloadBarcode('jpg')">Download as JPG</button>
+        <button onclick="downloadBarcode('pdf')">Download as PDF</button>
+    </div>
+</div>
+
+<script>
+    function generateBarcode() {
+        const format = document.getElementById("barcodeFormat").value;
+        const barcodeValue = document.getElementById("barcodeInput").value;
+        const canvas = document.getElementById("barcodeCanvas");
+
+        if (barcodeValue === "") {
+            alert("Please enter a barcode number.");
+            return;
+        }
+
+        JsBarcode(canvas, barcodeValue, {
+            format: format,
+            displayValue: true
+        });
+    }
+
+    function downloadBarcode(type) {
+        const canvas = document.getElementById("barcodeCanvas");
+        const link = document.createElement("a");
+
+        if (type === 'jpg') {
+            link.href = canvas.toDataURL("image/jpeg");
+            link.download = "barcode.jpg";
+            link.click();
+        } else if (type === 'pdf') {
+            const imgData = canvas.toDataURL("image/png");
+            const { jsPDF } = window.jspdf; // jsPDF modülünü çağırıyoruz
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 10, 10, 180, 160); // Resmi PDF'e ekliyoruz
+            pdf.save("barcode.pdf");
+        }
+    }
+</script>
+
+<!-- jsPDF kütüphanesini eklemek için -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

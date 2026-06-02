@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Turkkraft’s comprehensive content list for resources on packaging, trade tools, market insights, and industry guides." />
+
+    <title>Sitemap Link Tree</title>
+    <style>
+        /* Modern ve mobil uyumlu stil */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #linkTreeContainer {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        #linkTree a {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        #linkTree a:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+
+        .level-0 {
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+
+        .level-1 {
+            font-weight: bold;
+            background-color: #e2e6ea;
+        }
+
+        .level-2, .level-3 {
+            background-color: #f1f3f5;
+        }
+
+        /* Filtreleme alanı için stil */
+        #filterSection {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #filterInput {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Mobil uyumlu görünüm */
+        @media (max-width: 768px) {
+            #linkTreeContainer {
+                width: 100%;
+                box-shadow: none;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="linkTreeContainer">
+        <center><img width="139" height="80" src="/cache/original/turk-kraft-logo.webp" alt="TURKKRAFT® - Ati İç ve Dış Ticaret Ltd. Şti."></center>
+        <h3 style=" text-align: center; ">All Contents List</h3>
+        <div id="filterSection">
+            <input type="text" id="filterInput" placeholder="Filter by keyword" />
+        </div>
+        <div id="linkTree"></div>
+        
+        <div id="footerContainer" style="text-align: center; margin-top: 20px; padding: 10px; background-color: #f1f1f1;">
+            <p>© 2024 - <a href="https://creaati.com" target="_blank">Creaati</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Sabit filtre değeri. Örneğin sadece "/en/" içeren URL'leri göstermek istiyorsanız buraya yazabilirsiniz.
+        const fixedFilter = '/ar/';
+
+        // Otomatik olarak domaini al ve sitemap URL'sini oluştur
+        const currentDomain = window.location.origin;
+        const sitemapUrl = `${currentDomain}/sitemap.xml`;
+
+        // Sayfa yüklendiğinde fetch ile sitemap'i al
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch(sitemapUrl)
+                .then(response => response.text())
+                .then(data => {
+                    // XML'i parse et
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "application/xml");
+                    let urls = Array.from(xmlDoc.getElementsByTagName('loc')).map(el => el.textContent);
+                    
+                    // Sabit filtre uygulama: Sadece sabit filtreyi içeren URL'leri al
+                    urls = urls.filter(url => url.includes(fixedFilter));
+
+                    // Filtreleme işlemi (kullanıcının girdiği değere göre filtreleme)
+                    document.getElementById('filterInput').addEventListener('input', function() {
+                        const filterValue = this.value.trim();
+                        const filteredUrls = filterValue ? urls.filter(url => url.includes(filterValue)) : urls;
+
+                        // URL'leri kategorize et ve görüntüle
+                        const structuredData = categorizeUrls(filteredUrls);
+                        const linkTreeContainer = document.getElementById('linkTree');
+                        linkTreeContainer.innerHTML = ''; // Varolan listeyi temizle
+                        displayUrls(structuredData, linkTreeContainer);
+                    });
+
+                    // İlk olarak sabit filtreye uygun tüm URL'leri görüntüle
+                    const structuredData = categorizeUrls(urls);
+                    const linkTreeContainer = document.getElementById('linkTree');
+                    linkTreeContainer.innerHTML = ''; // Varolan listeyi temizle
+                    displayUrls(structuredData, linkTreeContainer);
+                })
+                .catch(error => {
+                    console.error('Sitemap yüklenirken bir hata oluştu:', error);
+                });
+        });
+
+        // URL'leri hiyerarşik düzene göre kategorize eden fonksiyon
+        function categorizeUrls(urls) {
+            const structuredData = {};
+            
+            urls.forEach(url => {
+                const urlObj = new URL(url);
+                const pathSegments = urlObj.pathname.split('/').filter(Boolean);
+
+                // Son segment anlamsız mı kontrol et
+                const lastSegment = pathSegments[pathSegments.length - 1];
+                if (lastSegment && /^[0-9]+$/.test(lastSegment)) return; // Anlamsız numaralar varsa atla
+                
+                let currentLevel = structuredData;
+                
+                pathSegments.forEach((segment, index) => {
+                    if (!currentLevel[segment]) {
+                        currentLevel[segment] = {
+                            __url: index === pathSegments.length - 1 ? url : null,
+                            __children: {}
+                        };
+                    }
+                    currentLevel = currentLevel[segment].__children;
+                });
+            });
+            
+            return structuredData;
+        }
+
+        // Kategorize edilmiş URL'leri ekranda gösteren fonksiyon
+        function displayUrls(structuredData, parentElement, level = 0) {
+            for (const key in structuredData) {
+                const data = structuredData[key];
+                const linkElement = document.createElement('a');
+                linkElement.href = data.__url || '#';
+                linkElement.textContent = formatText(key);
+                linkElement.target = '_blank'; // Yeni sekmede aç
+                linkElement.classList.add(`level-${level}`);
+
+                // Eğer üst düzey veya ikinci kademe başlık ise kalın yap
+                if (level === 0 || level === 1) {
+                    linkElement.style.fontWeight = 'bold';
+                }
+                
+                parentElement.appendChild(linkElement);
+
+                // Alt seviyeleri göster
+                if (Object.keys(data.__children).length > 0) {
+                    displayUrls(data.__children, parentElement, level + 1);
+                }
+            }
+        }
+
+        // Metindeki tire işaretlerini kaldıran ve ilk harfi büyük harf yapan fonksiyon
+        function formatText(string) {
+            return string.replace(/-/g, ' ').charAt(0).toUpperCase() + string.replace(/-/g, ' ').slice(1);
+        }
+    </script>
+     
+</body>
+</html>

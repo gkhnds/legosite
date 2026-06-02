@@ -1,0 +1,1 @@
+{!! $masters->site_ayarlari->data->dynamic->index_script !!}

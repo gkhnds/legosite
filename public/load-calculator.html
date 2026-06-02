@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Load Calculator | Optimize Your Shipping Space</title>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+   
+<meta name="description" content="Use our container load calculator to estimate how many boxes or pallets fit in standard 20ft and 40ft containers. Optimize shipping space with Box Producer.">
+<meta name="keywords" content="load calculator, container capacity, 20ft container, 40ft container, box fit calculator, shipping tools, Box Producer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Language" content="en">
+<link rel="canonical" href="https://boxproducer.com/load-calculator.html">
+
+ 
+<meta property="og:title" content="Load Calculator | 20ft & 40ft Container Capacity Estimator - Box Producer">
+<meta property="og:description" content="Quickly calculate how many boxes or pallets can fit in a shipping container. Use our online load calculator for free.">
+<meta property="og:url" content="https://boxproducer.com/load-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://boxproducer.com/cache/original/box-producer-logo.webp"> <!-- Replace with actual image -->
+
+ 
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Load Calculator | Container Volume Estimator - Box Producer">
+<meta name="twitter:description" content="Estimate the number of boxes that fit in a 20ft or 40ft container. Ideal for packaging and logistics.">
+<meta name="twitter:image" content="https://boxproducer.com/cache/original/box-producer-logo.webp"> <!-- Replace with actual image -->
+
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Load Calculator",
+  "url": "https://boxproducer.com/load-calculator.html",
+  "description": "Use this tool to calculate the number of boxes or pallets that can fit into 20ft and 40ft shipping containers. Ideal for optimizing shipping and packaging loads.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Box Producer",
+    "url": "https://boxproducer.com"
+  }
+}
+</script>
+
+
+    <style>
+        :root {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --primary-color: #0d6efd;
+            --primary-hover: #0b5ed7;
+            --container-color: #adb5bd;
+        }
+        
+        .dark {
+            --bg-primary: #121212;
+            --bg-secondary: #1f1f1f;
+            --bg-tertiary: #252525;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --border-color: #2d2d2d;
+            --primary-color: #3a86ff;
+            --primary-hover: #0056b3;
+            --container-color: #2d2d2d;
+        }
+        
+        /* Dark Mode Styles */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar {
+            background-color: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar-brand, .nav-link {
+            color: var(--text-primary) !important;
+        }
+        .container.main-container {
+            background-color: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+        h2, h3, h5 {
+            color: var(--text-primary);
+        }
+        .form-control {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .form-control:focus {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-color: var(--primary-color);
+        }
+        .form-check-input {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+        }
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .form-check-label {
+            color: var(--text-primary);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+        .btn-outline-secondary {
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        .btn-outline-secondary:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .text-muted {
+            color: var(--text-secondary) !important;
+        }
+        .info-box {
+            background-color: var(--bg-tertiary);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .info-title {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            color: var(--text-primary);
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .canvas-container {
+            width: 100%;
+            height: 400px;
+            background-color: var(--bg-tertiary);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        #container3D {
+            width: 100%;
+            height: 100%;
+        }
+        .view-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .view-btn {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .view-btn:hover {
+            background-color: var(--bg-primary);
+        }
+        .view-btn .material-icons {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .loading-spinner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid transparent;
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .footer {
+            background-color: var(--bg-tertiary);
+            padding: 30px 0;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--text-primary);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .footer-divider {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .info-box {
+                padding: 12px;
+            }
+            .info-value {
+                font-size: 20px;
+            }
+            .canvas-container {
+                height: 300px;
+            }
+        }
+
+        /* Navbar toggler */
+        .navbar-toggler {
+            border-color: var(--border-color);
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        /* Alert styles */
+        .alert-container {
+            margin-top: 15px;
+        }
+        .alert {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
+        }
+        .alert-warning {
+            border-left-color: #ffc107;
+        }
+        .alert-success {
+            border-left-color: #28a745;
+        }
+        
+        /* Theme switcher */
+        .theme-switch-container {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+        .theme-switch {
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            position: relative;
+        }
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px var(--primary-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider-icon {
+            position: absolute;
+            top: 7px;
+            z-index: 1;
+            color: #fff;
+            font-size: 14px;
+        }
+        .sun-icon {
+            left: 8px;
+            display: none;
+        }
+        .moon-icon {
+            right: 8px;
+        }
+        input:checked ~ .sun-icon {
+            display: block;
+        }
+        input:checked ~ .moon-icon {
+            display: none;
+        }
+        
+        /* Cargo form styles */
+        .cargo-item {
+            background-color: var(--bg-tertiary);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .cargo-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cargo-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .remove-cargo-btn {
+            color: var(--text-secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .remove-cargo-btn:hover {
+            color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        #addCargoButton {
+            margin-top: 10px;
+        }
+        
+        /* Conditional form styles */
+        .cargo-type-radio:checked ~ .stack-option {
+            display: block;
+        }
+        .cargo-type-radio:not(:checked) ~ .stack-option {
+            display: none;
+        }
+        
+        /* Tooltip */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip-text {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 5px 10px;
+            max-width: 200px;
+            z-index: 100;
+            font-size: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            margin-top: 5px;
+        }
+        
+        .tooltip-container:hover .tooltip-text {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://boxproducer.com">
+                <img src="https://boxproducer.com/cache/original/box-producer-logo.webp" alt="boxproducer" style="height: 40px;" class="logo-dark">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://boxproducer.com/">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://boxproducer.com/en/contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="theme-switch-container">
+                    <label class="theme-switch" for="themeSwitch">
+                        <input type="checkbox" id="themeSwitch" checked>
+                        <span class="slider"></span>
+                        <span class="slider-icon sun-icon">☀️</span>
+                        <span class="slider-icon moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-container my-4">
+        <div class="text-center mb-4">
+            <h2 class="mb-2">Container Load Calculator</h2>
+            <p class="text-muted">Optimize your shipping space by calculating how multiple cargo types can fit in a container</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Form Card -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">Calculator Settings</div>
+                    <div class="card-body">
+                        <form id="calculatorForm">
+                            <div class="mb-3">
+                                <label for="containerType" class="form-label">Container Type</label>
+                                <select id="containerType" name="containerType" class="form-control" required>
+                                    <option value="20ft" selected>20ft Standard (235×239×589 cm)</option>
+                                    <option value="40ft" >40ft Standard (235×239×1203 cm)</option>
+                                    <option value="40ftHC">40ft High Cube (235×269×1203 cm)</option>
+                                    <option value="45ftHC">45ft High Cube (235×269×1356 cm)</option>
+                                </select>
+                            </div>
+
+                            <h5 class="mb-3">Cargo Items</h5>
+                            <div id="cargoItems">
+                                <!-- First cargo item (default) -->
+                                <div class="cargo-item" data-cargo-index="0">
+                                    <div class="cargo-item-header">
+                                        <div class="cargo-badge">Cargo #1</div>
+                                        <button type="button" class="remove-cargo-btn" disabled title="Cannot remove first cargo item">
+                                            <span class="material-icons">close</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class="form-label">Cargo Type</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input cargo-type-radio" type="radio" name="cargoType-0" value="pallet" checked data-index="0">
+                                                <label class="form-check-label">
+                                                    Pallet
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input cargo-type-radio" type="radio" name="cargoType-0" value="box" data-index="0">
+                                                <label class="form-check-label">
+                                                    Box
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label">Number of Units</label>
+                                            <input type="number" class="form-control cargo-count" value="20" min="1" max="1000" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Dimensions (cm)</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="form-label form-label-sm">Width</label>
+                                                <input type="number" class="form-control cargo-width" value="120" min="1" required>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label form-label-sm">Depth</label>
+                                                <input type="number" class="form-control cargo-depth" value="80" min="1" required>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label form-label-sm">Height</label>
+                                                <input type="number" class="form-control cargo-height" value="150" min="1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check stackable-option" id="stackOption-0">
+                                        <input class="form-check-input cargo-can-stack" type="checkbox" id="canStack-0">
+                                        <label class="form-check-label" for="canStack-0">
+                                            Can be stacked
+                                        </label>
+                                        <div class="tooltip-container">
+                                            <span class="material-icons" style="font-size: 14px; vertical-align: middle; color: var(--text-secondary);">info</span>
+                                            <div class="tooltip-text stack-tooltip-0">
+                                                For pallets: If checked, pallets can be stacked on top of each other.
+                                                For boxes: This option is always enabled - boxes can be placed on any available space.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" id="addCargoButton" class="btn btn-outline-secondary w-100 mb-3">
+                                <span class="material-icons">add</span> Add Another Cargo Type
+                            </button>
+
+                            <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+                                <span class="material-icons me-2">calculate</span>
+                                Calculate and Visualize
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Card -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">Container Visualization</div>
+                    <div class="card-body">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <div class="info-title">Units Placed</div>
+                                    <div class="info-value" id="placedPallets">0/0</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <div class="info-title">Goods Loaded</div>
+                                    <div class="info-value" id="fillPercentage">0%</div>
+                                    <div class="small text-muted" id="unusedSpace"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <div class="info-title">Container Type</div>
+                                    <div class="info-value" id="containerTypeDisplay">40ft</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="alertContainer" class="alert-container">
+                            <!-- Alerts will be inserted here dynamically -->
+                        </div>
+
+                        <div class="canvas-container">
+                            <div id="loading" class="loading-spinner" style="display: none;">
+                                <div class="spinner"></div>
+                                <p>Calculating layout...</p>
+                            </div>
+                            <div id="container3D"></div>
+                        </div>
+
+                        <div class="view-buttons">
+                            <button class="view-btn" data-view="default">
+                                <span class="material-icons">restart_alt</span> Reset View
+                            </button>
+                            <button class="view-btn" data-view="top">
+                                <span class="material-icons">vertical_align_top</span> Top View
+                            </button>
+                            <button class="view-btn" data-view="side">
+                                <span class="material-icons">vertical_align_center</span> Side View
+                            </button>
+                            <button class="view-btn" data-view="front">
+                                <span class="material-icons">vertical_align_bottom</span> Front View
+                            </button>
+                        </div>
+
+                        <div class="legend" id="legend">
+                            <!-- Legend items will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0 text-center text-md-start">
+                    <img src="https://boxproducer.com/cache/original/box-producer-logo.webp" alt="boxproducer" style="height: 40px;" class="logo-dark">
+                </div>
+                <div class="col-md-8 text-center text-md-end">
+                    
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="text-center">
+                <p class="text-muted">&copy; <span id="currentYear"></span> boxproducer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+
+    <script>
+        // Container dimensions
+        const containerDimensions = {
+            "20ft": { width: 235, height: 239, depth: 589, name: "20ft Standard" },
+            "40ft": { width: 235, height: 239, depth: 1203, name: "40ft Standard" },
+            "40ftHC": { width: 235, height: 269, depth: 1203, name: "40ft High Cube" },
+            "45ftHC": { width: 235, height: 269, depth: 1356, name: "45ft High Cube" }
+        };
+
+        // Colors for cargo types and layers
+        const cargoColors = [
+            0x4caf50, // Green
+            0xff9800, // Orange
+            0x2196f3, // Blue
+            0xe91e63, // Pink
+            0x9c27b0, // Purple
+            0x00bcd4, // Cyan
+            0xffeb3b, // Yellow
+            0xff5722, // Deep Orange
+            0x795548, // Brown
+            0x607d8b  // Blue Grey
+        ];
+
+        // Current state
+        let currentScene = null;
+        let currentCamera = null;
+        let currentRenderer = null;
+        let currentControls = null;
+        let animationId = null;
+        let currentView = 'default';
+        let nextCargoIndex = 1;
+
+        // Elements
+        const form = document.getElementById('calculatorForm');
+        const loadingElement = document.getElementById('loading');
+        const container3DElement = document.getElementById('container3D');
+        const placedPalletsElement = document.getElementById('placedPallets');
+        const fillPercentageElement = document.getElementById('fillPercentage');
+        const unusedSpaceElement = document.getElementById('unusedSpace');
+        const containerTypeDisplayElement = document.getElementById('containerTypeDisplay');
+        const viewButtons = document.querySelectorAll('.view-btn');
+        const currentYearElement = document.getElementById('currentYear');
+        const alertContainer = document.getElementById('alertContainer');
+        const legendElement = document.getElementById('legend');
+        const cargoItemsContainer = document.getElementById('cargoItems');
+        const addCargoButton = document.getElementById('addCargoButton');
+        const themeSwitchCheckbox = document.getElementById('themeSwitch');
+
+        // Toggle stacking options visibility when cargo type changes
+        function initCargoTypeListeners() {
+            document.querySelectorAll('.cargo-type-radio').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const cargoIndex = this.getAttribute('data-index');
+                    const stackOption = document.getElementById(`stackOption-${cargoIndex}`);
+                    const isBox = this.value === 'box';
+                    
+                    if (stackOption) {
+                        // For boxes, always enable stacking (they can always be stacked)
+                        if (isBox) {
+                            document.getElementById(`canStack-${cargoIndex}`).checked = true;
+                            document.getElementById(`canStack-${cargoIndex}`).disabled = true;
+                        } else {
+                            // For pallets, stacking is optional
+                            document.getElementById(`canStack-${cargoIndex}`).disabled = false;
+                        }
+                    }
+                });
+            });
+        }
+
+        // Initialize listeners for the first cargo item
+        initCargoTypeListeners();
+
+        // Theme switcher
+        themeSwitchCheckbox.addEventListener('change', function() {
+            document.documentElement.classList.toggle('dark', this.checked);
+            
+            // If we have an active visualization, redraw it with the new theme colors
+            if (currentScene && currentRenderer && currentCamera) {
+                currentScene.background = new THREE.Color(document.documentElement.classList.contains('dark') ? 0x181818 : 0xf8f9fa);
+                currentRenderer.render(currentScene, currentCamera);
+            }
+        });
+
+        // Set current year in footer
+        currentYearElement.textContent = new Date().getFullYear();
+
+        // Add new cargo item
+        addCargoButton.addEventListener('click', function() {
+            const cargoIndex = nextCargoIndex++;
+            const newCargoItem = document.createElement('div');
+            newCargoItem.className = 'cargo-item';
+            newCargoItem.dataset.cargoIndex = cargoIndex;
+            
+            newCargoItem.innerHTML = `
+                <div class="cargo-item-header">
+                    <div class="cargo-badge">Cargo #${cargoIndex + 1}</div>
+                    <button type="button" class="remove-cargo-btn" title="Remove this cargo item">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Cargo Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input cargo-type-radio" type="radio" name="cargoType-${cargoIndex}" value="pallet" checked data-index="${cargoIndex}">
+                            <label class="form-check-label">
+                                Pallet
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input cargo-type-radio" type="radio" name="cargoType-${cargoIndex}" value="box" data-index="${cargoIndex}">
+                            <label class="form-check-label">
+                                Box
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Number of Units</label>
+                        <input type="number" class="form-control cargo-count" value="10" min="1" max="1000" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Dimensions (cm)</label>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label form-label-sm">Width</label>
+                            <input type="number" class="form-control cargo-width" value="30" min="1" required>
+                        </div>
+                        <div class="col">
+                            <label class="form-label form-label-sm">Depth</label>
+                            <input type="number" class="form-control cargo-depth" value="30" min="1" required>
+                        </div>
+                        <div class="col">
+                            <label class="form-label form-label-sm">Height</label>
+                            <input type="number" class="form-control cargo-height" value="30" min="1" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check stackable-option" id="stackOption-${cargoIndex}">
+                    <input class="form-check-input cargo-can-stack" type="checkbox" id="canStack-${cargoIndex}">
+                    <label class="form-check-label" for="canStack-${cargoIndex}">
+                        Can be stacked
+                    </label>
+                    <div class="tooltip-container">
+                        <span class="material-icons" style="font-size: 14px; vertical-align: middle; color: var(--text-secondary);">info</span>
+                        <div class="tooltip-text stack-tooltip-${cargoIndex}">
+                            For pallets: If checked, pallets can be stacked on top of each other.
+                            For boxes: This option is always enabled - boxes can be placed on any available space.
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            cargoItemsContainer.appendChild(newCargoItem);
+            
+            // Add remove button event listener
+            const removeButton = newCargoItem.querySelector('.remove-cargo-btn');
+            removeButton.addEventListener('click', function() {
+                cargoItemsContainer.removeChild(newCargoItem);
+            });
+            
+            // Add cargo type change listeners
+            initCargoTypeListeners();
+        });
+
+        // Form submission handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateContainerLoad();
+        });
+
+        // View buttons event listeners
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const view = this.getAttribute('data-view');
+                changeView(view);
+            });
+        });
+
+        // Window resize handler for responsive 3D visualization
+        window.addEventListener('resize', function() {
+            if (currentRenderer && currentCamera) {
+                const width = container3DElement.clientWidth;
+                const height = container3DElement.clientHeight;
+                
+                currentCamera.aspect = width / height;
+                currentCamera.updateProjectionMatrix();
+                currentRenderer.setSize(width, height);
+            }
+        });
+
+        // Initialize default container type display
+        containerTypeDisplayElement.textContent = containerDimensions['40ft'].name;
+
+        // Add a loading indicator
+        function showLoading() {
+            loadingElement.style.display = 'flex';
+        }
+
+        function hideLoading() {
+            loadingElement.style.display = 'none';
+        }
+
+        // Show alerts
+        function showAlert(message, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type} mb-3`;
+            alert.innerHTML = message;
+            
+            alertContainer.appendChild(alert);
+        }
+
+        // Clear alerts
+        function clearAlerts() {
+            alertContainer.innerHTML = '';
+        }
+
+        // Update legend based on cargo types and layers
+        function updateLegend(cargoTypes) {
+            legendElement.innerHTML = '';
+            
+            cargoTypes.forEach((cargo, index) => {
+                const colorIndex = index % cargoColors.length;
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <div class="legend-color" style="background-color: #${cargoColors[colorIndex].toString(16)}"></div>
+                    <span>${cargo.type === 'pallet' ? 'Pallet' : 'Box'} ${index + 1}: ${cargo.width}×${cargo.depth}×${cargo.height} cm</span>
+                `;
+                legendElement.appendChild(legendItem);
+            });
+            
+            // Add container to legend
+            const containerLegendItem = document.createElement('div');
+            containerLegendItem.className = 'legend-item';
+            containerLegendItem.innerHTML = `
+                <div class="legend-color" style="background-color: var(--container-color)"></div>
+                <span>Container</span>
+            `;
+            legendElement.appendChild(containerLegendItem);
+        }
+
+        // Get cargo items from form
+        function getCargoItems() {
+            const cargoItems = [];
+            const cargoElements = cargoItemsContainer.querySelectorAll('.cargo-item');
+            
+            cargoElements.forEach((element, index) => {
+                const cargoType = element.querySelector('input[name^="cargoType"]:checked').value;
+                const count = parseInt(element.querySelector('.cargo-count').value);
+                const width = parseInt(element.querySelector('.cargo-width').value);
+                const depth = parseInt(element.querySelector('.cargo-depth').value);
+                const height = parseInt(element.querySelector('.cargo-height').value);
+                const canStackInput = element.querySelector('.cargo-can-stack');
+                
+                // For boxes, canStack is always true. For pallets, it depends on the checkbox
+                const canStack = cargoType === 'box' ? true : canStackInput.checked;
+                
+                cargoItems.push({
+                    type: cargoType,
+                    count,
+                    width,
+                    depth,
+                    height,
+                    canStack,
+                    index
+                });
+            });
+            
+            return cargoItems;
+        }
+
+        // Calculate container load and create visualization
+        function calculateContainerLoad() {
+            clearAlerts();
+            showLoading();
+            
+            // Get form values
+            const containerType = document.getElementById('containerType').value;
+            const container = containerDimensions[containerType];
+            const cargoItems = getCargoItems();
+            
+            // Update container type display
+            containerTypeDisplayElement.textContent = container.name;
+            
+            // Calculate container loading
+            const result = calculateMultipleCargoLoading(container, cargoItems);
+            
+            // Update results display
+            updateResultsDisplay(result, container, cargoItems);
+            
+            // Create 3D visualization
+            createContainerVisualization(container, result.placedItems, currentView);
+            
+            // Update legend
+            updateLegend(cargoItems);
+            
+            // Hide loading
+            hideLoading();
+        }
+
+        // Check if an item can be placed on the floor or on another item
+        function canBePlacedAt(grid, position, item, gridResolution) {
+            // If it's a box, it can be placed anywhere there's room
+            if (item.type === 'box') {
+                return true;
+            }
+            
+            // If it's a pallet
+            if (item.type === 'pallet') {
+                // If stacking is allowed, it can be placed anywhere there's room
+                if (item.canStack) {
+                    return true;
+                }
+                
+                // If stacking is not allowed, it must be on the floor
+                if (position.z > 0) {
+                    // Check if there's another item below
+                    for (let y = position.y; y < position.y + Math.ceil(item.width / gridResolution); y++) {
+                        for (let x = position.x; x < position.x + Math.ceil(item.depth / gridResolution); x++) {
+                            // Check what's below
+                            if (position.z > 0) {
+                                // There is something below at this position
+                                if (grid[y][position.z - 1][x] !== 0) {
+                                    // Check if it's a pallet (1) or box (2)
+                                    const belowType = grid[y][position.z - 1][x];
+                                    
+                                    // Pallets can only be stacked on floor or on boxes, never on other pallets unless canStack=true
+                                    if (belowType === 1) { // 1 means pallet
+                                        return false; // Cannot place pallet on another pallet
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                return true; // Either on floor or on boxes, which is allowed
+            }
+            
+            return false; // Unknown type
+        }
+
+        // Calculate loading for multiple cargo types
+        function calculateMultipleCargoLoading(container, cargoItems) {
+            // Variables to track results
+            const placedItems = [];
+            let totalRequestedCount = 0;
+            let totalPlacedCount = 0;
+            let containerVolume = container.width * container.height * container.depth;
+            let totalUsedVolume = 0;
+            let containerCapacity = {}; // Track capacity per cargo type
+            let containerUsage = {}; // Track usage per cargo type
+            
+            // Track space usage with a 3D grid
+            const gridResolution = 5; // cm per grid cell
+            const gridWidth = Math.ceil(container.width / gridResolution);
+            const gridHeight = Math.ceil(container.height / gridResolution);
+            const gridDepth = Math.ceil(container.depth / gridResolution);
+            
+            // Initialize 3D grid (0 = empty, 1 = pallet, 2 = box)
+            const grid = new Array(gridWidth).fill(0).map(() => 
+                new Array(gridHeight).fill(0).map(() => 
+                    new Array(gridDepth).fill(0)
+                )
+            );
+            
+            // Calculate container capacity for each cargo type first
+            cargoItems.forEach(cargo => {
+                // For pallets without stacking, calculate based on floor area
+                if (cargo.type === 'pallet' && !cargo.canStack) {
+                    const floorArea = container.width * container.depth;
+                    
+                    // Try both orientations to find which one fits more
+                    const orientationA = Math.floor(floorArea / (cargo.width * cargo.depth));
+                    const orientationB = Math.floor(floorArea / (cargo.depth * cargo.width));
+                    
+                    containerCapacity[cargo.index] = Math.max(orientationA, orientationB);
+                } 
+                // For boxes or stackable pallets, calculate based on volume
+                else {
+                    const maxLayers = Math.floor(container.height / cargo.height);
+                    const floorArea = container.width * container.depth;
+                    
+                    // Try both orientations to find which one fits more
+                    const orientationA = Math.floor(floorArea / (cargo.width * cargo.depth));
+                    const orientationB = Math.floor(floorArea / (cargo.depth * cargo.width));
+                    
+                    const maxPerLayer = Math.max(orientationA, orientationB);
+                    containerCapacity[cargo.index] = maxPerLayer * maxLayers;
+                }
+                
+                // Initialize usage to 0
+                containerUsage[cargo.index] = 0;
+            });
+            
+            // Place larger items first for better space utilization
+            const sortedCargoItems = [...cargoItems].sort((a, b) => {
+                const volumeA = a.width * a.depth * a.height;
+                const volumeB = b.width * b.depth * b.height;
+                return volumeB - volumeA; // Sort descending by volume
+            });
+            
+            // Process each cargo type
+            sortedCargoItems.forEach(cargo => {
+                totalRequestedCount += cargo.count;
+                let placedCount = 0;
+                
+                // For each unit of this cargo type
+                for (let i = 0; i < cargo.count; i++) {
+                    // Find best position for this item
+                    const position = findBestPosition(grid, cargo, container, gridResolution);
+                    
+                    if (position) {
+                        // Mark position as occupied in grid
+                        markGridOccupied(grid, position, cargo, gridResolution);
+                        
+                        // Add to placed items
+                        placedItems.push({
+                            x: position.x,
+                            y: position.y,
+                            z: position.z,
+                            width: cargo.width,
+                            depth: cargo.depth,
+                            height: cargo.height,
+                            cargoIndex: cargo.index,
+                            type: cargo.type
+                        });
+                        
+                        placedCount++;
+                        containerUsage[cargo.index]++;
+                        totalUsedVolume += cargo.width * cargo.depth * cargo.height;
+                    } else {
+                        // Couldn't place this item
+                        break;
+                    }
+                }
+                
+                totalPlacedCount += placedCount;
+            });
+            
+            // Calculate overall fill percentage based on capacity usage
+            let overallCapacity = 0;
+            let overallUsage = 0;
+            
+            for (const index in containerCapacity) {
+                const capacity = containerCapacity[index];
+                const usage = containerUsage[index];
+                const requestedAmount = cargoItems.find(c => c.index === parseInt(index)).count;
+                
+                // For fill percentage, we only consider the space needed by requested items
+                const effectiveCapacity = Math.min(capacity, requestedAmount);
+                
+                overallCapacity += effectiveCapacity;
+                overallUsage += usage;
+            }
+            
+            // Overall fill percentage (used capacity / total capacity)
+            const fillPercentage = overallCapacity > 0 ? Math.round((overallUsage / overallCapacity) * 100) : 0;
+            
+            // Also calculate volume utilization for reference
+            const volumeUtilization = Math.round((totalUsedVolume / containerVolume) * 100);
+            
+            // Calculate unused space
+            const unusedVolume = containerVolume - totalUsedVolume;
+            
+            return {
+                placedItems,
+                totalPlacedCount,
+                totalRequestedCount,
+                fillPercentage,
+                volumeUtilization,
+                unusedVolume,
+                containerCapacity,
+                containerUsage
+            };
+        }
+
+        // Find best position for a cargo item
+        function findBestPosition(grid, cargo, container, gridResolution) {
+            const gridWidth = grid.length;
+            const gridHeight = grid[0].length;
+            const gridDepth = grid[0][0].length;
+            
+            const itemGridWidth = Math.ceil(cargo.width / gridResolution);
+            const itemGridDepth = Math.ceil(cargo.depth / gridResolution);
+            const itemGridHeight = Math.ceil(cargo.height / gridResolution);
+            
+            // Try both orientations (normal and rotated)
+            const orientations = [
+                { width: itemGridWidth, depth: itemGridDepth, realWidth: cargo.width, realDepth: cargo.depth },
+                { width: itemGridDepth, depth: itemGridWidth, realWidth: cargo.depth, realDepth: cargo.width }
+            ];
+            
+            // Check all possible positions
+            for (let orientation of orientations) {
+                for (let y = 0; y < gridWidth - orientation.width; y++) {
+                    for (let z = 0; z < gridHeight - itemGridHeight; z++) {
+                        for (let x = 0; x < gridDepth - orientation.depth; x++) {
+                            // Check if this position is valid
+                            if (isPositionValid(grid, { x, y, z }, orientation.width, orientation.depth, itemGridHeight, cargo)) {
+                                // Return real-world coordinates (convert grid to cm)
+                                return { 
+                                    x: x * gridResolution, 
+                                    y: y * gridResolution, 
+                                    z: z * gridResolution,
+                                    width: orientation.realWidth,
+                                    depth: orientation.realDepth
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            
+            return null; // No valid position found
+        }
+
+        // Check if a position is valid for placement
+        function isPositionValid(grid, position, width, depth, height, cargo) {
+            // Check if each cell in the item's space is available
+            for (let y = position.y; y < position.y + width; y++) {
+                for (let z = position.z; z < position.z + height; z++) {
+                    for (let x = position.x; x < position.x + depth; x++) {
+                        if (grid[y][z][x] !== 0) {
+                            return false; // Cell is already occupied
+                        }
+                    }
+                }
+            }
+            
+            // Check if the item can be placed at this position
+            // based on stacking rules (boxes can be placed anywhere, pallets have special rules)
+            if (position.z > 0) {
+                let hasSupport = false;
+                let isAllowedToStack = true;
+                
+                for (let y = position.y; y < position.y + width; y++) {
+                    for (let x = position.x; x < position.x + depth; x++) {
+                        if (position.z > 0) {
+                            // Check if there is support directly below
+                            if (grid[y][position.z - 1][x] !== 0) {
+                                hasSupport = true;
+                                
+                                // If it's a pallet, check if we're allowed to stack on what's below
+                                if (cargo.type === 'pallet' && !cargo.canStack) {
+                                    // Check what type of item is below (1 = pallet, 2 = box)
+                                    if (grid[y][position.z - 1][x] === 1) {
+                                        // Pallets cannot stack on pallets unless canStack is true
+                                        isAllowedToStack = false;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (!isAllowedToStack) break;
+                }
+                
+                if (!hasSupport || !isAllowedToStack) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // Mark grid cells as occupied
+        function markGridOccupied(grid, position, cargo, gridResolution) {
+            const itemGridWidth = Math.ceil(cargo.width / gridResolution);
+            const itemGridDepth = Math.ceil(cargo.depth / gridResolution);
+            const itemGridHeight = Math.ceil(cargo.height / gridResolution);
+            
+            const startY = Math.floor(position.y / gridResolution);
+            const startZ = Math.floor(position.z / gridResolution);
+            const startX = Math.floor(position.x / gridResolution);
+            
+            // Check if width and depth are swapped in the position
+            const useWidth = position.width === cargo.width ? itemGridWidth : itemGridDepth;
+            const useDepth = position.depth === cargo.depth ? itemGridDepth : itemGridWidth;
+            
+            // Grid value: 1 = pallet, 2 = box
+            const gridValue = cargo.type === 'pallet' ? 1 : 2;
+            
+            for (let y = startY; y < startY + useWidth; y++) {
+                for (let z = startZ; z < startZ + itemGridHeight; z++) {
+                    for (let x = startX; x < startX + useDepth; x++) {
+                        if (y < grid.length && z < grid[0].length && x < grid[0][0].length) {
+                            grid[y][z][x] = gridValue;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Update display with results
+        function updateResultsDisplay(result, container, cargoItems) {
+            // Update units placed display
+            placedPalletsElement.textContent = `${result.totalPlacedCount}/${result.totalRequestedCount}`;
+            
+            // Update fill percentage - based on usage vs capacity ratio
+            fillPercentageElement.textContent = `${result.fillPercentage}%`;
+            
+            // Update unused space
+            const unusedVolumeM3 = (result.unusedVolume / 1000000).toFixed(2); // convert from cm³ to m³
+            unusedSpaceElement.textContent = `Unused: ${unusedVolumeM3} m³`;
+            
+            // Clear previous alerts
+            alertContainer.innerHTML = "";
+            
+            // Calculate additional containers needed
+            if (result.totalPlacedCount < result.totalRequestedCount) {
+                const remainingItems = result.totalRequestedCount - result.totalPlacedCount;
+                
+                // Estimate additional containers needed based on fill percentage
+                let additionalContainers = Math.ceil(remainingItems / result.totalPlacedCount);
+                if (additionalContainers === Infinity || isNaN(additionalContainers)) {
+                    additionalContainers = 1; // Fallback if no items were placed
+                }
+                
+                showAlert(`
+                    <strong>Not all units fit!</strong> 
+                    <div class="mt-2">
+                        ${result.totalPlacedCount} out of ${result.totalRequestedCount} units fit in the container.
+                        <br>${remainingItems} units could not be placed.
+                        <br>You need approximately ${additionalContainers} additional container(s) for the remaining cargo.
+                    </div>
+                `, 'warning');
+            }
+            
+            // Additional detailed results
+            let detailMessage = '<strong>Loading Details:</strong><ul>';
+            
+            cargoItems.forEach((cargo, index) => {
+                const placedForThisCargo = result.placedItems.filter(item => item.cargoIndex === index).length;
+                const cargoName = cargo.type === 'pallet' ? 'Pallets' : 'Boxes';
+                const capacity = result.containerCapacity[index] || 0;
+                
+                // Calculate usage percentage for this cargo type
+                const usagePercentage = capacity > 0 ? Math.round((placedForThisCargo / Math.min(capacity, cargo.count)) * 100) : 0;
+                
+                detailMessage += `<li>${placedForThisCargo} of ${cargo.count} ${cargoName} (${cargo.width}×${cargo.depth}×${cargo.height} cm)`;
+                
+                if (capacity > 0) {
+                    detailMessage += ` - Capacity Usage: ${usagePercentage}%`;
+                }
+                
+                detailMessage += `</li>`;
+            });
+            
+            detailMessage += `</ul><div>Container volume utilization: ${result.volumeUtilization}%</div>`;
+            detailMessage += `<div>Space utilization: ${result.fillPercentage}%</div>`;
+            
+            if (result.totalPlacedCount > 0) {
+                // Add this as a second alert
+                const successAlert = document.createElement('div');
+                successAlert.className = `alert alert-success mb-3`;
+                successAlert.innerHTML = detailMessage;
+                alertContainer.appendChild(successAlert);
+            }
+        }
+
+        // Create container visualization
+        function createContainerVisualization(containerDimensions, pallets, view) {
+            // Clear previous scene if exists
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            if (currentRenderer && container3DElement.contains(currentRenderer.domElement)) {
+                container3DElement.removeChild(currentRenderer.domElement);
+            }
+            
+            // Create scene
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(document.documentElement.classList.contains('dark') ? 0x181818 : 0xf8f9fa);
+            
+            // Create renderer
+            const width = container3DElement.clientWidth;
+            const height = container3DElement.clientHeight;
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container3DElement.appendChild(renderer.domElement);
+            
+            // Create camera
+            const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            
+            // Create OrbitControls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.screenSpacePanning = false;
+            controls.maxPolarAngle = Math.PI / 2;
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 1);
+            scene.add(ambientLight);
+            
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight1.position.set(1000, 1000, 1000);
+            scene.add(directionalLight1);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight2.position.set(-1000, 500, -500);
+            scene.add(directionalLight2);
+            
+            // Create container wireframe
+            const containerMaterial = new THREE.MeshBasicMaterial({
+                color: getComputedStyle(document.documentElement).getPropertyValue('--container-color'),
+                wireframe: true,
+                transparent: true,
+                opacity: 0.5
+            });
+            
+            const containerGeometry = new THREE.BoxGeometry(
+                containerDimensions.width,
+                containerDimensions.height,
+                containerDimensions.depth
+            );
+            
+            const containerMesh = new THREE.Mesh(containerGeometry, containerMaterial);
+            containerMesh.position.set(
+                containerDimensions.width / 2,
+                containerDimensions.height / 2,
+                containerDimensions.depth / 2
+            );
+            scene.add(containerMesh);
+            
+            // Create pallets
+            pallets.forEach(pallet => {
+                const colorIndex = pallet.cargoIndex % cargoColors.length;
+                const palletMaterial = new THREE.MeshStandardMaterial({
+                    color: cargoColors[colorIndex],
+                    roughness: 0.7,
+                    metalness: 0.2
+                });
+                
+                const palletGeometry = new THREE.BoxGeometry(
+                    pallet.width,
+                    pallet.height,
+                    pallet.depth
+                );
+                
+                const palletMesh = new THREE.Mesh(palletGeometry, palletMaterial);
+                
+                // Position pallet
+                palletMesh.position.set(
+                    pallet.y + pallet.width / 2,
+                    pallet.z + pallet.height / 2,
+                    pallet.x + pallet.depth / 2
+                );
+                
+                scene.add(palletMesh);
+            });
+            
+            // Set camera position based on view
+            positionCamera(camera, controls, containerDimensions, view);
+            
+            // Animation loop
+            function animate() {
+                animationId = requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            
+            // Start animation
+            animate();
+            
+            // Save current scene elements for later reference
+            currentScene = scene;
+            currentCamera = camera;
+            currentRenderer = renderer;
+            currentControls = controls;
+        }
+
+        // Position camera based on view
+        function positionCamera(camera, controls, containerDimensions, view) {
+            const maxDimension = Math.max(
+                containerDimensions.width,
+                containerDimensions.height,
+                containerDimensions.depth
+            );
+            
+            switch (view) {
+                case 'top':
+                    camera.position.set(
+                        containerDimensions.width / 2,
+                        containerDimensions.height * 2,
+                        containerDimensions.depth / 2
+                    );
+                    controls.target.set(
+                        containerDimensions.width / 2,
+                        0,
+                        containerDimensions.depth / 2
+                    );
+                    break;
+                case 'side':
+                    camera.position.set(
+                        -containerDimensions.width,
+                        containerDimensions.height / 2,
+                        containerDimensions.depth / 2
+                    );
+                    controls.target.set(
+                        containerDimensions.width / 2,
+                        containerDimensions.height / 2,
+                        containerDimensions.depth / 2
+                    );
+                    break;
+                case 'front':
+                    camera.position.set(
+                        containerDimensions.width / 2,
+                        containerDimensions.height / 2,
+                        -containerDimensions.depth
+                    );
+                    controls.target.set(
+                        containerDimensions.width / 2,
+                        containerDimensions.height / 2,
+                        containerDimensions.depth / 2
+                    );
+                    break;
+                default:
+                    camera.position.set(
+                        maxDimension * 1.5,
+                        maxDimension,
+                        maxDimension * 1.5
+                    );
+                    controls.target.set(
+                        containerDimensions.width / 2,
+                        containerDimensions.height / 2,
+                        containerDimensions.depth / 2
+                    );
+            }
+            
+            controls.update();
+        }
+
+        // Change camera view
+        function changeView(view) {
+            if (!currentCamera || !currentControls) return;
+            
+            currentView = view;
+            
+            const containerType = document.getElementById('containerType').value;
+            const containerDims = containerDimensions[containerType];
+            
+            positionCamera(currentCamera, currentControls, containerDims, view);
+        }
+
+        // Auto-calculate on page load for demo purposes
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateContainerLoad();
+        });
+    </script>
+</body>
+</html>

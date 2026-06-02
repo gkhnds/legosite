@@ -1,0 +1,76 @@
+[05-Sep-2024 21:25:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/turrk74/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/turrk74/public_html/config/database.php on line 18
+[07-Sep-2024 09:46:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/turrk74/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/turrk74/public_html/config/database.php on line 18
+[03-Nov-2024 02:50:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/turrk74/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/turrk74/public_html/config/database.php on line 18
+[05-Nov-2024 19:40:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/turrk74/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/turrk74/public_html/config/database.php on line 18
+[16-Nov-2024 22:25:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/turrk74/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/turrk74/public_html/config/database.php on line 18
+[29-Apr-2025 02:03:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/boxpro/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/boxpro/public_html/config/app.php on line 16
+[03-Oct-2025 13:55:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/cust4mel4ati4/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/cust4mel4ati4/public_html/config/services.php on line 18
+[03-Oct-2025 14:11:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/cust4mel4ati4/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/cust4mel4ati4/public_html/config/services.php on line 18
+[11-Dec-2025 22:51:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/database.php on line 18
+[11-Dec-2025 22:51:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/mail.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/mail.php on line 3
+[11-Dec-2025 22:51:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/app.php on line 16
+[11-Dec-2025 22:51:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/services.php on line 18
+[12-Dec-2025 03:31:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/database.php on line 18
+[12-Dec-2025 03:31:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/app.php on line 16
+[12-Dec-2025 03:31:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/mail.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/mail.php on line 3
+[19-Apr-2026 08:45:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/mail.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/mail.php on line 3
+[25-Apr-2026 06:04:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/database.php on line 18
+[25-Apr-2026 06:04:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/mail.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/mail.php on line 3
+[25-Apr-2026 06:04:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/lukskutug/public_html/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/lukskutug/public_html/config/services.php on line 18
